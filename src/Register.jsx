@@ -1,11 +1,21 @@
-import React from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
+import './styles.css';
 
-const validationSchema = Yup.object({
-    name: Yup.string().required("zorunlu alan"),
-    email: Yup.string().email("geçersiz email adresi").required("doldurulması zorunlu alan"),
-    password: Yup.string().password("doldurulması zorunlu alan")
+const validationSchema = Yup.object().shape({
+    name: Yup.string()
+        .min(3, 'Minimum 3 symbols')
+        .max(50, 'Maximum 50 symbols')
+        .required('First name is required'),
+    email: Yup.string()
+        .email('Wrong email format')
+        .min(3, 'Minimum 3 symbols')
+        .max(50, 'Maximum 50 symbols')
+        .required('Email is required'),
+    password: Yup.string()
+        .min(3, 'Minimum 3 symbols')
+        .max(50, 'Maximum 50 symbols')
+        .required('Password is required'),
 
 })
 const Register = () => {
@@ -26,6 +36,8 @@ const Register = () => {
     return (
         <form onSubmit={handleSubmit}>
 
+            <div className="register-container" >Register</div>
+
             <input
 
                 type="text"
@@ -38,7 +50,7 @@ const Register = () => {
             <input
                 type="text"
                 name="email"
-                placeholder='email'
+                placeholder='email giriniz'
                 values={values.email}
                 onChange={handleChange}
 
@@ -51,7 +63,8 @@ const Register = () => {
                 values={values.password}
                 onChange={handleChange}
             />
-
+            {errors.password ? errors.password : null}
+            <button type="submit">Kayıt ol</button>
 
         </form>
     )
