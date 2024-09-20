@@ -1,6 +1,7 @@
 /* useformik, initialvlues , submit , onsubmit, errors, handlechange, handlesubmit, values  */
 import { useFormik } from 'formik';
 import './styles.css';
+
 const Registerr = () => {
 
     const { values, errors, handleChange, handleSubmit } = useFormik({
@@ -12,7 +13,7 @@ const Registerr = () => {
             email: "",
             password: "",
             passwordConfirmed: "",
-            term: ""
+            term: false
         }
 
         // validationSchema: validate
@@ -20,7 +21,7 @@ const Registerr = () => {
         // const inputs = {
         //     nam
         // }
-    console.log(values)
+        // console.log(values)
     })
 
     return (
@@ -29,22 +30,54 @@ const Registerr = () => {
         <form onChange={handleChange} className='register-container'>
 
             <div>
-                <input type="text" name={values.name} placeholder='İsim giriniz'
-                    {errors.name && errors.message}
+                <label>isim giriniz</label>
+                <input
+                    type="text"
+                    id="name "
+                    value={values.name}
+                    placeholder='İsim giriniz'
+                    onChange={handleChange}
+
                 />
+                {errors.name && <div>{errors.name}</div>}
+
             </div>
             <div>
-                <input type="text" name={values.email} placeholder='email giriniz' />
+                <label >Email giriniz</label>
+                <input
+                    type="text"
+                    id="email "
+                    value={values.email}
+                    placeholder='email giriniz'
+                    onChange={handleChange} />
             </div>
             <div>
-                <input type="text" name={values.name} placeholder='şifre giriniz' />
+                <label>Şifre giriniz</label>
+                <input
+                    type="text"
+                    id="password"
+                    value={values.password}
+                    placeholder='şifre giriniz'
+                    onChange={handleChange} />
             </div>
             <div>
-                <input type="text" name={values.name} placeholder='tekrar giriniz' />
+                <label >Şifreyi tekrar giriniz</label>
+                <input
+                    type="text"
+                    id="passwordConfirmed"
+                    value={values.passwordConfirmed}
+                    placeholder='tekrar giriniz'
+                    onChange={handleChange} />
             </div>
             <div>
-                <input type="radio" name={values.term} />
-                <input type="text" name={values.name} placeholder='İsim giriniz' />
+
+                <input
+                    type="checkbox"
+                    value={values.term}
+                    onChange={handleChange}
+                    id="term"
+                />
+                <label>Kullanım şartlarını kabul ediyorum</label>
             </div>
 
             <div>
