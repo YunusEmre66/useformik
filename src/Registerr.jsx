@@ -80,9 +80,9 @@ const Registerr = () => {
                 <label>Kullanım şartlarını kabul ediyorum</label>
             </div>
 
-            <div>
-                <button type="submit" onSubmit={handleSubmit}>Gönder</button>
-            </div>
+
+            <button type="submit" onSubmit={handleSubmit}>Gönder</button>
+
 
 
         </form>
