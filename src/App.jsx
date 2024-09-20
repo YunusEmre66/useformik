@@ -1,11 +1,13 @@
 import './App.css'
-import Register from './Register'
+// import Register from './Register'
+import Registerr from './Registerr'
 
 function App() {
 
   return (
     <>
-      <Register />
+      <Registerr />
+      {/* <Register/> */}
       <div>FORMİK</div>
     </>
   )
